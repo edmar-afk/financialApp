@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent zoom on touch devices */
+body {
+  touch-action: pan-x pan-y;
+}
+
+/* Prevent zooming with double-tap */
+html, body {
+  touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
