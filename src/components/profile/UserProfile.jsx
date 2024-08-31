@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom"; import advisorImg from "../../assets/img/advisorImg.png";
-import bg from '../../assets/img/bg.jpg';
+import { Link } from "react-router-dom";import advisorImg from "../../assets/img/advisorImg.png";
+import bg from "../../assets/img/bg.jpg";
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+
 function UserProfile() {
 	const formatDate = (dateString) => {
 		const date = new Date(dateString);
@@ -16,7 +18,7 @@ function UserProfile() {
 					<div className="absolute top-0">
 						<img
 							src={bg}
-                            alt=""
+							alt=""
 							className="w-full object-contain rounded-2xl shadow-2xl"
 						/>
 					</div>
@@ -28,13 +30,6 @@ function UserProfile() {
 									src={advisorImg}
 									alt="image"
 								/>
-								<div className="group/tooltip relative">
-									<span className="w-[15px] h-[15px] absolute bg-success rounded-full bottom-0 end-0 -mb-1 -mr-2  border border-white"></span>
-									<span className="text-xs absolute z-10 transition-opacity duration-300 ease-in-out px-3 py-2 whitespace-nowrap text-center transform bg-white rounded-2xl shadow-sm bottom-0 -mb-2 start-full ml-4 font-medium text-secondary-inverse group-hover/tooltip:opacity-100 opacity-0 block">
-										{" "}
-										Status: Active{" "}
-									</span>
-								</div>
 							</div>
 						</div>
 						<div className="grow">
@@ -53,17 +48,7 @@ function UserProfile() {
 											className="flex items-center mb-2 mr-5 text-secondary-dark hover:text-purple-400"
 											href="#">
 											<span className="mr-1">
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													viewBox="0 0 24 24"
-													fill="currentColor"
-													className="w-5 h-5">
-													<path
-														fillRule="evenodd"
-														d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z"
-														clipRule="evenodd"
-													/>
-												</svg>
+												<LocalPhoneOutlinedIcon fontSize="small"/>
 											</span>{" "}
 											{userData.username}{" "}
 										</a>
