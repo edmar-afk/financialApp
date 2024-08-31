@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";import { Link, useNavigate } from "react-router-dom";
 import api from "../assets/api";
 import Swal from "sweetalert2";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
+import Loader from "../components/Loader";
 function Register() {
 	const [firstName, setFirstName] = useState("");
 	const [mobileNum, setMobileNum] = useState("");
@@ -61,7 +60,6 @@ function Register() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
-		// Show SweetAlert2 loading spinner
 
 		try {
 			const res = await api.post("/api/register/", {
@@ -73,10 +71,7 @@ function Register() {
 			});
 
 			if (res.status === 201) {
-				// Close the SweetAlert2 loading spinner
-
-				// Navigate to login page with state
-				navigate("/login", { state: { successMessage: "You have been registered successfully." } });
+				navigate("/login", { state: { successMessage: "You have been registered successfully, proceed to login." } });
 			} else {
 				Swal.fire({
 					title: "Error!",
@@ -89,7 +84,6 @@ function Register() {
 			let errorMessage = "Registration failed";
 
 			if (error.response) {
-				// If the error response contains specific error messages, display them
 				if (error.response.data && typeof error.response.data === "object") {
 					errorMessage = Object.values(error.response.data).join(" ");
 				} else if (error.response.data && error.response.data.detail) {
@@ -110,115 +104,101 @@ function Register() {
 
 	return (
 		<>
-			<Link
-				to="/"
-				className="p-3 flex items-center fixed top-14">
-				<ArrowBackIcon className="text-gray-800" />
-			</Link>
-			<div className="font-[sans-serif]">
-				<div className="bg-white h-screen">
-					<div className="bg-white rounded-xl sm:px-6 px-4 py-8 max-w-md w-full h-max max-lg:mx-auto">
+			<div className="relative mx-auto w-full max-w-md bg-white h-screen px-6 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
+				<Link
+					to="/"
+					className="p-2 flex items-center fixed top-4">
+					<ArrowBackIcon className="text-gray-800 z-50" />
+				</Link>
+				<div className="w-full pt-44">
+					<div className="text-center">
+						<h1 className="text-3xl font-semibold text-gray-900">Register</h1>
+						<p className="mt-2 text-gray-500">Sign up below to create your account</p>
+					</div>
+					<div className="mt-5">
 						<form onSubmit={handleSubmit}>
-							<div className="mb-8 pt-24">
-								<div className="flex flex-col items-center justify-center pt-12 mb-2">
-									<img
-										src=''
-										className="w-40"
-										alt=""
-									/>
-									<p className="text-gray-800 font-bold text-4xl">Register</p>
-								</div>
+							<div className="relative mt-6">
+								<input
+									type="text"
+									name="firstName"
+									id="firstName"
+									placeholder="Full Name"
+									value={firstName}
+									onChange={(e) => setFirstName(e.target.value)}
+									className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+								/>
+								<label
+									htmlFor="firstName"
+									className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">
+									Full Name
+								</label>
 							</div>
-
-							<div>
-								<div className="relative flex items-center">
-									<input
-										type="text"
-										value={firstName}
-										onChange={(e) => setFirstName(e.target.value)}
-										required
-										className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-										placeholder="Full Name"
-									/>
-								</div>
+							<div className="relative mt-6">
+								<input
+									type="text"
+									name="mobileNum"
+									id="mobileNum"
+									placeholder="Mobile Number"
+									value={mobileNum}
+									onChange={handleMobileNumChange}
+									className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+								/>
+								<label
+									htmlFor="mobileNum"
+									className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">
+									Mobile Number
+								</label>
 							</div>
-
-							<div className="mt-2">
-								<div className="relative flex flex-col items-center">
-									<input
-										type="text"
-										value={mobileNum}
-										onChange={handleMobileNumChange}
-										required
-										className={`w-full text-sm text-gray-800 border px-4 py-3 rounded-md outline-blue-600 ${
-											error.includes("Please enter an 11-digit number starting with '09'.")
-												? "border-red-500"
-												: "border-gray-300"
-										}`}
-										placeholder="Mobile Number"
-										maxLength="11"
-									/>
-									{error && error.includes("Please enter an 11-digit number starting with '09'.") && (
-										<p className="text-red-500 text-sm mt-2">{error}</p>
-									)}
-								</div>
+							<div className="relative mt-6">
+								<input
+									type="password"
+									name="password"
+									id="password"
+									placeholder="Password"
+									value={password}
+									onChange={handlePasswordChange}
+									className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+								/>
+								<label
+									htmlFor="password"
+									className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">
+									Password
+								</label>
 							</div>
-
-							<div className="mt-2">
-								<div className="relative flex items-center">
-									<input
-										type="password"
-										value={password}
-										onChange={handlePasswordChange}
-										required
-										className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-										placeholder="Password"
-									/>
-								</div>
+							<div className="relative mt-6">
+								<input
+									type="password"
+									name="password2"
+									id="password2"
+									placeholder="Confirm Password"
+									value={password2}
+									onChange={handlePassword2Change}
+									className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+								/>
+								<label
+									htmlFor="password2"
+									className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-gray-800 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-gray-800">
+									Confirm Password
+								</label>
 							</div>
-
-							<div className="mt-2">
-								<div className="relative flex items-center">
-									<input
-										type="password"
-										value={password2}
-										onChange={handlePassword2Change}
-										required
-										className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-										placeholder="Confirm Password"
-									/>
-								</div>
-							</div>
-
-							{error && !error.includes("Please enter an 11-digit number starting with '09'.") && (
-								<p className="text-red-500 mt-2 text-xs">{error}</p>
-							)}
-
-							<div className="flex flex-col items-center justify-between mt-4">
+							<div className="my-6">
 								<button
 									type="submit"
 									disabled={!canSubmit || loading}
-									className={`px-6 py-2 w-full mb-4 text-white font-semibold rounded-md transition-colors ${
-										canSubmit ? "bg-blue-600 hover:bg-blue-700" : "bg-red-600 cursor-not-allowed"
-									}`}>
-									{loading ? (
-										<>
-											<HourglassBottomIcon className="animate-spin h-5 w-5 mr-3 text-white" />
-											Validating...
-										</>
-									) : (
-										"Register"
-									)}
+									className="w-full rounded-md bg-purple-600 px-3 py-4 text-white focus:bg-gray-600 focus:outline-none disabled:bg-gray-300 disabled:cursor-not-allowed">
+									{loading ? <Loader /> : "Register"}
 								</button>
-								<p>
-									Already have an account?
-									<Link
-										to="/login"
-										className="text-blue-500 hover:underline ml-2">
-										Login here
-									</Link>
-								</p>
 							</div>
+							{error && <div className="text-red-500 text-center mb-4">{error}</div>}
+							<p className="text-center text-sm text-gray-500">
+								Already have an account?
+								<Link
+									to="/login"
+									className="font-semibold ml-1 text-gray-600 hover:underline focus:text-gray-800 focus:outline-none">
+									Sign in
+								</Link>
+								.
+							</p>
 						</form>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */ import { motion } from "framer-motion";import { Link } from "react-router-dom";import HowToRegIcon from "@mui/icons-material/HowToReg";
-import LoginIcon from "@mui/icons-material/Login";
+/* eslint-disable react/no-unescaped-entities */
+import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 function Homepage() {
 	return (
@@ -36,10 +36,10 @@ function Homepage() {
 				</p>
 				<div className="relative flex flex-row justify-evenly mt-8">
 					<div className="bg-purple-700 text-white py-1.5 px-8 rounded-2xl">
-						<Link to={"ss"}>Login</Link>
+						<Link to={"/login"}>Login</Link>
 					</div>
 					<div className="border-2 border-purple-700 text-purple-700 py-1.5 px-8 rounded-2xl">
-						<Link to={"ss"}>Guess Login</Link>
+						<Link to={"/user-dashboard"}>Guest Login</Link>
 					</div>
 				</div>
 			</div>

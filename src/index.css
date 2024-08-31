@@ -5,6 +5,7 @@
 /* Prevent zoom on touch devices */
 body {
   touch-action: pan-x pan-y;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Prevent zooming with double-tap */
