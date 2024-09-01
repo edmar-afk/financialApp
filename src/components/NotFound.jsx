@@ -1,6 +1,20 @@
-/* eslint-disable react/no-unescaped-entities */ import { Link } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
+/* eslint-disable react/no-unescaped-entities */
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
 function NotFound() {
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	// Store the previous location when the NotFound component mounts
+	useEffect(() => {
+		if (location.state && location.state.from) {
+			// Do nothing if location.state.from exists
+		} else {
+			navigate("/", { state: { from: location } });
+		}
+	}, [location, navigate]);
+
 	return (
 		<>
 			<section className="bg-white">
@@ -23,11 +37,14 @@ function NotFound() {
 						</p>
 						<h1 className="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">404 Page not found</h1>
 						<p className="mt-4 text-gray-500">
-							You have trouble accessing this page. It's either under maintenance or doesn't exists:
+							You have trouble accessing this page. It's either under maintenance or doesn't exist:
 						</p>
 
-						<Link to={'/'} className="w-1/2 px-5 py-2 mt-8 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto hover:bg-blue-600">
-							Take me home
+						{/* Redirect to the last visited URL */}
+						<Link
+							to={location.state?.from?.pathname || "/"}
+							className="w-1/2 px-5 py-2 mt-8 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto hover:bg-blue-600">
+							Take me back
 						</Link>
 					</div>
 				</div>
