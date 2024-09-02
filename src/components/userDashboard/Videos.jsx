@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { videos } from "../../assets/Data";
 import videoBg from "../../assets/img/videobg.png";

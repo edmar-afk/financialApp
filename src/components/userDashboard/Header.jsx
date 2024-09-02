@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";import bgHeader from "../../assets/img/bgHeader.png";
-import LightModeIcon from "@mui/icons-material/LightMode";
+import { motion } from "framer-motion";import bgHeader from "../../assets/img/bgHeader.png";import LightModeIcon from "@mui/icons-material/LightMode";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
 
 function Header() {
@@ -40,7 +39,7 @@ function Header() {
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ type: "spring", stiffness: 260, duration: 0.5 }}>
 						{greeting}, <br />
-						{userData.first_name}
+						{userData.first_name || "Visitor"}
 					</motion.p>
 					<motion.div
 						className="absolute right-2 "
