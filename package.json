@@ -26,8 +26,10 @@
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-lite-youtube-embed": "^2.4.0",
     "react-medium-image-zoom": "^5.2.8",
-    "react-router-dom": "^6.24.1",
+    "react-router-dom": "^6.26.1",
+    "react-youtube": "^10.1.0",
     "styled-components": "^6.1.11",
     "sweetalert2": "^11.12.2"
   },
