@@ -27,15 +27,15 @@ function Header() {
 		// Evening: 6 PM to 11:59 PM
 		greeting = "Good Evening";
 		IconComponent = NightsStayIcon;
-		textColor = "text-purple-700";
+		textColor = "text-purple-900";
 	}
 
 	return (
 		<>
-			<div className="flex flex-col pt-8">
+			<div className="flex flex-col pt-8 relative">
 				<div className="flex flex-row items-center justify-between p-4">
 					<motion.p
-						className={`font-bold text-2xl ${textColor}`}
+						className={`font-bold text-2xl ${textColor} z-50`}
 						initial={{ x: -100, opacity: 0 }}
 						animate={{ x: 0, opacity: 1 }}
 						transition={{ type: "spring", stiffness: 260, duration: 0.5 }}>
@@ -43,13 +43,13 @@ function Header() {
 						{userData.first_name}
 					</motion.p>
 					<motion.div
-						className="absolute right-2"
+						className="absolute right-2 "
 						initial={{ scale: 0 }}
 						animate={{ scale: 1 }}
 						transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.2 }}>
 						<IconComponent
 							sx={{ fontSize: 120 }}
-							className={textColor === "text-black" ? "text-yellow-600" : "text-purple-700"}
+							className={textColor === "text-black" ? "text-yellow-600" : "text-purple-400"}
 						/>
 					</motion.div>
 				</div>

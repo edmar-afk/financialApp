@@ -5,7 +5,7 @@ import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 function TopBar() {
 	return (
 		<>
-			<div className="sticky top-4 mb-6 left-0 z-50 w-full h-16 bg-white border-b-2">
+			<div className="sticky top-0 pt- mb-6 left-0 z-[100] w-full h-16 bg-white border-b-2">
 				<div className="grid h-full max-w-lg grid-cols-4 mx-auto">
 					<NavLink
 						to="/user-dashboard"
