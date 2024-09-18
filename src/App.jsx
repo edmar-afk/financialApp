@@ -7,6 +7,13 @@ import NotFound from "./components/NotFound"
 import Homepage from "./routes/Homepage";
 import UserDashboard from "./routes/UserDashboard";
 import Profile from "./routes/Profile";
+import Chats from "./routes/Chats";
+import Quizzes from "./routes/Quizzes";
+import ChatBot from "./routes/ChatBot";
+import Conversation from './routes/Conversation'
+import QuizList from "./routes/QuizList";
+import QuizDetail from "./routes/QuizDetail";
+
 
 function Logout() {
 	localStorage.clear();
@@ -67,6 +74,30 @@ function App() {
 						<Route
 							path="/user-dashboard"
 							element={<UserDashboard />}
+						/>
+						<Route
+							path="/chats"
+							element={<Chats />}
+						/>
+						<Route
+							path="/room/advisor/:id"
+							element={<Conversation />}
+						/>
+						<Route
+							path="/chatbot"
+							element={<ChatBot />}
+						/>
+						<Route
+							path="/quizzes"
+							element={<Quizzes />}
+						/>
+						<Route
+							path="/quiz-list"
+							element={<QuizList />}
+						/>
+						<Route
+							path="/quiz-detail/:quizId"
+							element={<QuizDetail />}
 						/>
 						<Route
 							path="/profile"

@@ -17,7 +17,7 @@ function TopBar() {
 						<HomeOutlinedIcon />
 					</NavLink>
 					<NavLink
-						to="/messages"
+						to="/chats"
 						className={({ isActive }) =>
 							`inline-flex flex-col items-center justify-center font-medium px-5 hover:bg-purple-50 ${
 								isActive ? "text-purple-500 border-b-4 border-purple-500" : ""

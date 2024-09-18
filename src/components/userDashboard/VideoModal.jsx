@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */ /* eslint-disable react/no-unescaped-entities */ import * as React from "react";
-import Box from "@mui/material/Box";
+/* eslint-disable react/prop-types */ /* eslint-disable react/no-unescaped-entities */ import * as React from "react";import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
@@ -42,12 +41,12 @@ export default function VideoModal({ name, url }) {
 						<iframe
 							className="w-full rounded-lg"
 							src={`https://www.youtube.com/embed/${url}`}
-                            width="100%"
-                            height={350}
+							width="100%"
+							height={350}
 							title="YouTube video player"
 							frameBorder="0"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowfullscreen></iframe>
+							allowFullScreen></iframe>
 					</Box>
 				</Box>
 			</Modal>
