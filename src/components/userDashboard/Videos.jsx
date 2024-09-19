@@ -38,7 +38,7 @@ function Videos() {
 						<div className="absolute inset-0 flex items-center justify-between p-2 mx-6">
 							<div>
 								<p className="text-white text-xs font-bold">{video.name}</p>
-								<p className="text-white text-xs mt-0.5 font-extralight">{video.minutes} min</p>
+								<p className="text-white text-xs mt-2 font-extralight">{video.minutes} min - by: {video.owner}</p>
 							</div>
 							
 							<VideoModal name={video.name} url={video.link}/>
