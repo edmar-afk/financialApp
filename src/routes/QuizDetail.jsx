@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react";import { Link, useParams } from "react-router-dom";import api from "../assets/api";import Header from "../components/quizDetail/Header";
-import Question from "../components/quizDetail/Question";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import BackHandIcon from "@mui/icons-material/BackHand";
-import Swal from "sweetalert2";
-import UserAnswers from "../components/quiz/UserAnswers";
+import { useEffect, useState } from "react";import { Link, useParams } from "react-router-dom";import api from "../assets/api";import Header from "../components/quizDetail/Header";import Question from "../components/quizDetail/Question";import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";import BackHandIcon from "@mui/icons-material/BackHand";import Swal from "sweetalert2";import UserAnswers from "../components/quiz/UserAnswers";
 
 function QuizDetail() {
 	const { quizId } = useParams();
 	const [quizData, setQuizData] = useState({});
 	const [isTaken, setIsTaken] = useState(false);
 	const [score, setScore] = useState(null);
+	const [comment, setComment] = useState(null);
 	const [answer, setAnswer] = useState("");
 	const [placeholder, setPlaceholder] = useState("");
 	const [userList, setUserList] = useState([]); // Store list of users
 	const userData = JSON.parse(localStorage.getItem("userData")) || {};
-
+	console.log('comment:', comment)
 	// Fetch quiz data and user list if superuser
 	const fetchQuizData = async () => {
 		try {
@@ -29,6 +25,7 @@ function QuizDetail() {
 				if (checkResponse.data.status === "already_taken") {
 					setIsTaken(true);
 					setScore(checkResponse.data.score);
+					setComment(checkResponse.data.comment);
 					setAnswer(checkResponse.data.answer || "");
 					setPlaceholder(checkResponse.data.answer || "");
 				} else {
@@ -85,6 +82,7 @@ function QuizDetail() {
 			<Question
 				question={quizData.question}
 				score={score}
+				comment={comment}
 			/>
 
 			{/* Conditionally render content based on superuser status */}

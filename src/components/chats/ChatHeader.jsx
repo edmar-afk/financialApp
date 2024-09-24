@@ -1,5 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */ import WavingHandIcon from "@mui/icons-material/WavingHand";import logo from "../../assets/img/logo.jpg";
-import { motion } from "framer-motion";
+/* eslint-disable react/no-unescaped-entities */ import WavingHandIcon from "@mui/icons-material/WavingHand";import logo from "../../assets/img/logo.jpg";import { motion } from "framer-motion";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Link } from "react-router-dom";
 function ChatHeader() {
@@ -49,6 +48,7 @@ function ChatHeader() {
 						</p>
 					</div>
 				</div>
+			
 			</header>
 		</>
 	);

@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@botpress/webchat": "^2.1.10",
-    "@botpress/webchat-generator": "^0.2.9",
+    "@botpress/webchat": "^2.1.16",
+    "@botpress/webchat-generator": "^0.2.15",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fontsource/roboto": "^5.0.13",

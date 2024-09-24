@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */ import ThumbsUpDownIcon from "@mui/icons-material/ThumbsUpDown";import AnswerModal from "./AnswerModal";
+/* eslint-disable react/prop-types */ import ThumbsUpDownIcon from "@mui/icons-material/ThumbsUpDown";
+import AnswerModal from "./AnswerModal";
 import CommentModal from "./CommentModal";
 
 function UserAnswers({ name, answer, img, userQuizId, score, comment }) {

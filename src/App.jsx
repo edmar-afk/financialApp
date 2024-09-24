@@ -14,7 +14,6 @@ import Conversation from './routes/Conversation'
 import QuizList from "./routes/QuizList";
 import QuizDetail from "./routes/QuizDetail";
 
-
 function Logout() {
 	localStorage.clear();
 	return <Navigate to="/" />;
