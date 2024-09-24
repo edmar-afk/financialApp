@@ -1,9 +1,11 @@
-function BotPress() {	return (
-  <>
-    <div className="fixed mt-44 -z-50">Loading</div>
-		<iframe
-			className="h-screen"
-			srcDoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
+import Header from "../components/chatbot/Header";
+function BotPress() {
+	return (
+		<>
+			<Header />
+			<iframe
+				className="h-screen"
+				srcDoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
             <script>
               window.botpressWebChat.init({
                   'composerPlaceholder': 'Chat with bot',
@@ -24,15 +26,15 @@ function BotPress() {	return (
                   'closeOnEscape': false,
                   'showConversationsButton': true,
                   'enableTranscriptDownload': false,
-                  'stylesheet':'https://webchat-styler-css.botpress.app/prod/code/911b5e7e-abdf-4701-b9a4-5fa31a4a24e4/v72651/style.css'
+                  'stylesheet':'https://webchat-styler-css.botpress.app/prod/code/911b5e7e-abdf-4701-b9a4-5fa31a4a24e4/v91198/style.css'
                   
               });
             window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
             </script></body>"
-			width="100%"
-			height="100%"></iframe>
-	</>
-);
+				width="100%"
+				height="100%"></iframe>
+		</>
+	);
 }
 
 export default BotPress;
