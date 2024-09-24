@@ -4,7 +4,7 @@ function BotPress() {
 		<>
 			<Header />
 			<iframe
-				className="h-screen"
+				className="h-screen mt-8 pb-8"
 				srcDoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
             <script>
               window.botpressWebChat.init({
