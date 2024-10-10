@@ -60,7 +60,7 @@ function App() {
 					<Routes>
 						<Route
 							path="/"
-							element={<Homepage />}
+							element={<UserDashboard />}
 						/>
 						<Route
 							path="/register"

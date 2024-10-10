@@ -1,9 +1,7 @@
-/* eslint-disable react/no-unescaped-entities */import { Link } from "react-router-dom";
+/* eslint-disable react/no-unescaped-entities */ import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.jpg";
 
 function Homepage() {
-	
-
 	return (
 		<>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-32">
@@ -36,14 +34,14 @@ function Homepage() {
 						Hi there! Need help with your finances? <br /> Let's get started.
 					</span>
 				</p>
-				<div className="relative flex flex-row justify-evenly mt-8">
+				{/* <div className="relative flex flex-row justify-evenly mt-8">
 					<div className="bg-purple-700 text-white py-1.5 px-8 rounded-2xl">
 						<Link to={"/login"}>Login</Link>
 					</div>
 					<div className="border-2 border-purple-700 text-purple-700 py-1.5 px-8 rounded-2xl">
 						<Link to={"/user-dashboard"}>Guest Login</Link>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</>
 	);

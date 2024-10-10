@@ -33,11 +33,9 @@ function Body() {
 			console.error("Error fetching chatbot response:", error);
 		}
 
-		// Clear the input field
 		setInputValue("");
 	};
 
-	// Scroll to the bottom whenever messages change
 	useEffect(() => {
 		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
 	}, [messages]);
@@ -45,11 +43,11 @@ function Body() {
 	return (
 		<div className="w-full h-screen flex flex-col justify-between">
 			<div className="flex flex-col space-y-4 p-3 mb-44 mt-24">
-				{/* Display user messages */}
+				
 				{Array.isArray(messages) &&
 					messages.length > 0 &&
 					messages.map((msg, index) => {
-						const isUserMessage = index % 2 === 0; // Example logic
+						const isUserMessage = index % 2 === 0; 
 						return isUserMessage ? (
 							<Sender
 								key={index}
