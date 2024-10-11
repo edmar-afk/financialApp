@@ -1,14 +1,23 @@
-import { useEffect, useState } from "react";import ChatBubble from "./ChatBubble";import ChatHeader from "./ChatHeader";import api from "../../assets/api";
+import { useEffect, useState } from "react";import ChatBubble from "./ChatBubble";
+import ChatHeader from "./ChatHeader";
+import api from "../../assets/api";
+import NotLogin from "../profile/NotLogin";
 
 function ChatList() {
 	const [conversations, setConversations] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-	const currentUser = JSON.parse(localStorage.getItem("userData")) || {};
+	const currentUser = JSON.parse(localStorage.getItem("userData")) || null;
+
+	// Check if the user is not logged in
+	if (!currentUser) {
+		return <NotLogin />;
+	}
+
 	const userId = currentUser.id;
-	console.log(conversations)
+	console.log(conversations);
+
 	useEffect(() => {
-		// Function to fetch user conversations
 		const fetchConversations = async () => {
 			try {
 				const response = await api.get(`/api/my-chat-rooms/`);
@@ -29,8 +38,6 @@ function ChatList() {
 		// Clean up the interval when the component unmounts
 		return () => clearInterval(intervalId);
 	}, [userId]);
-
-
 
 	if (loading) {
 		return <p>Loading...</p>;

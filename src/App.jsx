@@ -13,6 +13,7 @@ import ChatBot from "./routes/ChatBot";
 import Conversation from './routes/Conversation'
 import QuizList from "./routes/QuizList";
 import QuizDetail from "./routes/QuizDetail";
+import Videos from "./routes/Videos";
 
 function Logout() {
 	localStorage.clear();
@@ -77,6 +78,10 @@ function App() {
 						<Route
 							path="/chats"
 							element={<Chats />}
+						/>
+						<Route
+							path="/videos"
+							element={<Videos />}
 						/>
 						<Route
 							path="/room/advisor/:id"
