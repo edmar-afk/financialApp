@@ -28,7 +28,10 @@ const fadeUpBounce = {
 
 function Quizzes() {
 	const navigate = useNavigate(); // Initialize useNavigate
+	const currentUser = JSON.parse(localStorage.getItem("userData")) || null;
 
+	// Check if the user is logged in before accessing currentUser.id
+	const userId = currentUser ? currentUser.id : null;
 	return (
 		<>
 			<TopBar />
@@ -58,11 +61,19 @@ function Quizzes() {
 					</motion.p>
 				</div>
 				<div className="flex flex-col p-4">
-					<motion.div
-						className="bg-purple-400 text-white text-2xl text-center py-1.5 w-fit mx-auto px-12 rounded-2xl mb-4"
-						variants={fadeUpBounce}>
-						<Link to={"/quiz-list"}>Play Now</Link>
-					</motion.div>
+					{userId ? (
+						<motion.div
+							className="bg-purple-400 text-white text-2xl text-center py-1.5 w-fit mx-auto px-12 rounded-2xl mb-4"
+							variants={fadeUpBounce}>
+							<Link to={"/quiz-list"}>Play Now</Link>
+						</motion.div>
+					) : (
+						<motion.div
+							className="bg-purple-400 text-white text-sm text-center py-1.5 w-fit mx-auto px-12 rounded-2xl mb-4"
+							variants={fadeUpBounce}>
+							<Link to={"/login"}>Login first to participate</Link>
+						</motion.div>
+					)}
 					<motion.div
 						onClick={() => navigate(-1)} // Navigate back to the previous page
 						className="border-2 text-red-500 border-red-400 text-2xl text-center py-1.5 mx-auto px-12 rounded-2xl cursor-pointer"
