@@ -1,11 +1,17 @@
-import { NavLink } from "react-router-dom";import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import { NavLink } from "react-router-dom";import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
+import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
-
+import SmartToyOutlinedIcon from "@mui/icons-material/SmartToyOutlined";
 function TopBar() {
+	const currentUser = JSON.parse(localStorage.getItem("userData")) || null;
+
+	// Check if the user is logged in before accessing currentUser.id
+	const userId = currentUser ? currentUser.id : null;
 	return (
 		<>
-			<div className="sticky top-0 pt-8 mb-6 left-0 z-[100] w-full h-24 bg-white border-b-2">
+			<div className="sticky top-0 pt-8 mb-6 left-0 z-[100] w-full h-24 bg-white border-b-2 overflow-x-hidden">
 				<div className="flex justify-between h-full w-full mx-auto">
 					<NavLink
 						to="/user-dashboard"
@@ -17,7 +23,16 @@ function TopBar() {
 						<HomeOutlinedIcon />
 					</NavLink>
 					<NavLink
-						to="/chats"
+						to="/chatbot"
+						className={({ isActive }) =>
+							`inline-flex flex-col items-center justify-center font-medium px-5 hover:bg-purple-50 ${
+								isActive ? "text-purple-500 border-b-4 border-purple-500" : ""
+							}`
+						}>
+						<SmartToyOutlinedIcon />
+					</NavLink>
+					<NavLink
+						to={userId ? "/advisorChat" : "/login"}
 						className={({ isActive }) =>
 							`inline-flex flex-col items-center justify-center font-medium px-5 hover:bg-purple-50 ${
 								isActive ? "text-purple-500 border-b-4 border-purple-500" : ""

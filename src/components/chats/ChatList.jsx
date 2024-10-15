@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";import ChatBubble from "./ChatBubble";
-import ChatHeader from "./ChatHeader";
+
 import api from "../../assets/api";
 import NotLoginChat from "../profile/NotLoginChat";
 
@@ -58,7 +58,7 @@ function ChatList() {
 		<section className="flex flex-col justify-center antialiased text-gray-600">
 			<div className="h-full">
 				<div className="relative w-full">
-					<ChatHeader />
+					
 
 					{currentUser ? (
 						<div className="py-3">
