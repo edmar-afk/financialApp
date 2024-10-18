@@ -1,6 +1,4 @@
-import Header from "../components/chatbot/Header";
-function BotPress() {
-	return (
+import Header from "../components/chatbot/Header";function BotPress() {	return (
 		<>
 			<Header />
 			<iframe
@@ -26,7 +24,7 @@ function BotPress() {
                   'closeOnEscape': false,
                   'showConversationsButton': true,
                   'enableTranscriptDownload': false,
-                  'stylesheet':'https://webchat-styler-css.botpress.app/prod/code/911b5e7e-abdf-4701-b9a4-5fa31a4a24e4/v91198/style.css'
+                  'stylesheet': 'https://webchat-styler-css.botpress.app/prod/code/8315adcf-40cb-42f5-aa58-1d3f73baea43/v65335/style.css'
                   
               });
             window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
