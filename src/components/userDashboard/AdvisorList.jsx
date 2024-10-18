@@ -35,7 +35,7 @@ function AdvisorList() {
 							name={advisor.first_name} // Assuming username as the display name
 							count={index + 1} // Incrementing the count based on the index
 							id={advisor.id}
-							img={advisor.profile_pic.profile_pic}
+							img={advisor.profile_pic}
 						/>
 					))}
 				</div>
