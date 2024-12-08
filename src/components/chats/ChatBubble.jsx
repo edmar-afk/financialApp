@@ -1,5 +1,27 @@
-import { Link } from "react-router-dom";
-/* eslint-disable react/prop-types */ function ChatBubble({ first_name, content, time_sent, id, img }) {
+import { useEffect, useState } from "react";import { Link } from "react-router-dom";
+import api from "../../assets/api";
+import logo from "../../assets/img/logo.jpg";
+
+function ChatBubble({ first_name, content, time_sent, id }) {
+	const [profilePic, setProfilePic] = useState(null);
+
+	useEffect(() => {
+		const fetchProfilePic = async () => {
+			try {
+				const response = await api.get(`/api/user-profile/${id}/profile-pic/`);
+				const profilePicPath = response.data.profile_pic;
+
+				// Build the full URL using VITE_API_URL
+				const fullProfilePicUrl = `${import.meta.env.VITE_API_URL}${profilePicPath}`;
+				setProfilePic(fullProfilePicUrl);
+			} catch (error) {
+				console.error("Error fetching profile picture:", error);
+			}
+		};
+
+		fetchProfilePic();
+	}, [id]);
+
 	return (
 		<Link
 			to={`/room/advisor/${id}`}
@@ -7,7 +29,7 @@ import { Link } from "react-router-dom";
 			<div className="flex items-center">
 				<img
 					className="rounded-full items-start flex-shrink-0 mr-3"
-					src={img}
+					src={profilePic || logo} // Use logo as fallback
 					width="32"
 					height="32"
 					alt={first_name}

@@ -1,8 +1,28 @@
-import logo from "../../assets/img/logo.jpg";import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import logo from "../../assets/img/logo.jpg";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import api from "../../assets/api";
+function AdvisorChatHead({ name, count, id }) {
+	const [profilePic, setProfilePic] = useState(null);
 
-// eslint-disable-next-line react/prop-types
-function AdvisorChatHead({ name, count, id, img }) {
+	useEffect(() => {
+		// Fetch profile picture for the given user ID
+		const fetchProfilePic = async () => {
+			try {
+				const response = await api.get(`/api/user-profile/${id}/profile-pic/`);
+				const profilePicPath = response.data.profile_pic;
+
+				// Build the full URL using VITE_API_URL
+				const fullProfilePicUrl = `${import.meta.env.VITE_API_URL}${profilePicPath}`;
+				setProfilePic(fullProfilePicUrl);
+			} catch (error) {
+				console.error("Error fetching profile picture:", error);
+			}
+		};
+
+		fetchProfilePic();
+	}, [id]);
 
 	return (
 		<>
@@ -15,17 +35,17 @@ function AdvisorChatHead({ name, count, id, img }) {
 						type: "spring",
 						stiffness: 260,
 						damping: 20,
-						delay: count ? count / 10 : 0, // add delay based on count
+						delay: count ? count / 10 : 0, // Add delay based on count
 					}}>
 					<div className="space-y-4">
 						<img
 							className="mx-auto rounded-full h-24 w-24"
-							src={img ? img : logo} // Check if img is null, display logo if it is
+							src={profilePic || logo} // Use the fetched profile picture or fallback to logo
 							alt="author avatar"
 						/>
 						<div className="space-y-2">
 							<div className="flex justify-center items-center flex-col space-y-3 text-lg font-medium leading-6">
-								<h3 className="text-white text-xs">{name}</h3>
+								<h3 className="text-white text-xs truncate w-[120px]">{name}</h3>
 							</div>
 						</div>
 					</div>

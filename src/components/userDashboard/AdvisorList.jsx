@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import AdvisorChatHead from "./AdvisorsChatHead";
+import { useEffect, useState } from "react";import AdvisorChatHead from "./AdvisorsChatHead";
 import api from "../../assets/api"; // Assuming 'api' is an axios instance
 
 function AdvisorList() {
@@ -35,7 +34,6 @@ function AdvisorList() {
 							name={advisor.first_name} // Assuming username as the display name
 							count={index + 1} // Incrementing the count based on the index
 							id={advisor.id}
-							img={advisor.profile_pic}
 						/>
 					))}
 				</div>
