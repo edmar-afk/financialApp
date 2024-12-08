@@ -1,9 +1,8 @@
-import Header from "../components/chatbot/Header";function BotPress() {	return (
-		<>
-			<Header />
-			<iframe
-				className="h-screen mt-8 pb-8"
-				srcDoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
+import Header from "../components/chatbot/Header";function BotPress() {	return (	<>
+		<Header />
+		<iframe
+			className="h-screen mt-8 pb-8"
+			srcDoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
             <script>
               window.botpressWebChat.init({
                   'composerPlaceholder': 'Chat with bot',
@@ -29,10 +28,10 @@ import Header from "../components/chatbot/Header";function BotPress() {	return (
               });
             window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
             </script></body>"
-				width="100%"
-				height="100%"></iframe>
-		</>
-	);
+			width="100%"
+			height="100%"></iframe>
+	</>
+);
 }
 
 export default BotPress;
