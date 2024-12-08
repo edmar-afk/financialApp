@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */ import { Link } from "react-router-dom";
-import logo from "../assets/img/logo.jpg";
+import logo from "../assets/img/logo.avif";
 
 function Homepage() {
 	return (
